@@ -1,9 +1,7 @@
-require './test/factories'
-
 
 Given /^I have a User Profile$/ do
   @user = FactoryGirl.create :user_profile
-  @user.save
+  @user.save # TODO Determine why this is necessary
 end
 
 

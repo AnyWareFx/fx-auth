@@ -1,6 +1,4 @@
 require 'data_mapper'
-require 'dm-timestamps'
-require 'dm-types'
 require 'uuidtools'
 
 

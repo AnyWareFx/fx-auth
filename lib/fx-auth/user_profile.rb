@@ -11,16 +11,21 @@ module AuthFx
     property :created_at, DateTime
     property :updated_at, DateTime
 
-    property :email, String, :required => true, :unique => true,
-             :format                   => :email_address,
-             :messages                 => {
+    property :email, String,
+             :required => true,
+             :unique   => true,
+             :format   => :email_address,
+             :messages => {
                  :presence  => "We need your email address.",
                  :is_unique => "We already have that email.",
                  :format    => "Doesn't look like an email address to me ..."
              }
-    property :email_verification_code, String, :default => UUIDTools::UUID.random_create.to_s
-    property :email_verified, Boolean, :default => false
     property :gravatar, String, :length => 255
+
+    property :email_verification_code, String, :length => 36, :unique => true
+    property :verification_code_sent_at, DateTime
+    property :verification_code_expires_at, DateTime
+    property :email_verified_at, DateTime
 
     property :pass_phrase, String, :length => 5..50
     property :pass_phrase_crypt, BCryptHash
@@ -32,7 +37,8 @@ module AuthFx
 
 
     before :create do
-      user_role = Role.first :name => :user
+      self.email_verification_code = UUIDTools::UUID.random_create.to_s
+      user_role                    = Role.first :name => :user
       self.roles << user_role if user_role
     end
 
@@ -98,7 +104,7 @@ module AuthFx
       if value == :online
         self.locked_until     = Time.now - 30 * 60 # Unlocked 30 minutes ago - TODO make configurable
         self.sign_on_attempts = 0
-        self.pass_key         = PassKey.new :expires => Time.now + 30 * 60 # expires 30 minutes from now - TODO make configurable
+        self.pass_key         = PassKey.new
 
       elsif value == :offline
         self.locked_until     = Time.now - 30 * 60 # Unlocked 30 minutes ago - TODO make configurable

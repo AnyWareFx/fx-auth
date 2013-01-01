@@ -5,17 +5,16 @@ module AuthFx
 
     belongs_to :user_profile
 
-
     property :id, Serial
     property :created_at, DateTime
     property :updated_at, DateTime
 
-    property :token, String, :unique => true
-    property :expires, Time, :required => true
+    property :token, String, :length => 36, :unique => true
+    property :expires_at, Time, :required => true
 
 
     before :create do
-      self.token   = UUIDTools::UUID.random_create.to_s
+      self.token = UUIDTools::UUID.random_create.to_s
       self.expires = Time.now + 30 * 60 # expires 30 minutes from now
     end
 
@@ -34,14 +33,14 @@ module AuthFx
 
 
     def expired?
-      Time.now > self.expires
+      Time.now > self.expires_at
     end
 
 
     def reset_timer
-      self.expires = Time.now + 30 * 60 # the user has another 30 minutes - TODO make configurable
+      self.expires_at = Time.now + 30 * 60 # the user has another 30 minutes - TODO make configurable
       save
-      self.expires
+      self.expires_at
     end
 
   end
