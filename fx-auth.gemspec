@@ -7,14 +7,14 @@ require 'fx-auth/version'
 
 
 Gem::Specification.new do |gem|
-  gem.name          = "fx-auth"
+  gem.name          = 'fx-auth'
   gem.version       = AuthFx::VERSION
 
-  gem.authors       = ["Dave Jackson"]
+  gem.authors       = ['Dave Jackson']
   gem.email         = %w(dave.jackson@anywarefx.com)
   gem.description   = %q{AuthFx - DataMapper models for RESTful Authentication}
   gem.summary       = %q{AuthFx - DataMapper models for RESTful Authentication}
-  gem.homepage      = ""
+  gem.homepage      = ''
 
   gem.files         = `git ls-files`.split($/)
   gem.executables   = gem.files.grep(%r{^bin/}).map{ |f| File.basename(f) }

@@ -6,7 +6,7 @@ end
 
 
 When /^I sign on with valid credentials$/ do
-  @user.sign_on @user.email, "password"
+  @user.sign_on @user.email, 'password'
 end
 
 

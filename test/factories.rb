@@ -11,7 +11,7 @@ FactoryGirl.define do
 
   factory :user_profile, :class => AuthFx::UserProfile do
     email
-    pass_phrase "password"
+    pass_phrase 'password'
   end
 
 end

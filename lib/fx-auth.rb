@@ -1,3 +1,3 @@
-require "fx-auth/version"
-require "fx-auth/models"
+require 'fx-auth/version'
+require 'fx-auth/models'
 

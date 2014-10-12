@@ -5,5 +5,5 @@ require 'cucumber/rake/task'
 
 
 Cucumber::Rake::Task.new :test do |task|
-  task.cucumber_opts = "features --format pretty"
+  task.cucumber_opts = 'features --format pretty'
 end
