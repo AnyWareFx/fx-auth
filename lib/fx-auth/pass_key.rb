@@ -15,7 +15,7 @@ module AuthFx
 
     before :create do
       self.token = UUIDTools::UUID.random_create.to_s
-      self.expires = Time.now + 30 * 60 # expires 30 minutes from now
+      self.expires_at = Time.now + 30 * 60 # expires 30 minutes from now
     end
 
 

@@ -120,6 +120,16 @@ module AuthFx
     end
 
 
+    def status
+      if super == :online and self.pass_key and self.pass_key.expires_at
+        if Time.now > self.pass_key.expires_at
+          self.status = :offline
+        end
+      end
+      super
+    end
+
+
     def authenticate? token
       authenticated = (self.status == :online and
           self.pass_key and
