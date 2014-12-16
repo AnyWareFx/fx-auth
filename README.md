@@ -1,6 +1,6 @@
 # AuthFx
 
-TODO: Write a gem description
+Ruby DataMapper Models for Authentication and Authorization
 
 ## Installation
 
@@ -18,7 +18,7 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+For usage, see the [Sinatra::Fx::Auth gem](https://github.com/AnyWareFx/sinatra-fx-auth)
 
 ## Contributing
 
