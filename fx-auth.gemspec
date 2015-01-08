@@ -13,8 +13,8 @@ Gem::Specification.new do |gem|
 
   gem.authors       = ['Dave Jackson']
   gem.email         = %w(dave.jackson@anywarefx.com)
-  gem.description   = %q{AuthFx - DataMapper models for RESTful Authentication and Authorization}
-  gem.summary       = %q{AuthFx - DataMapper models for RESTful Authentication and Authorization}
+  gem.description   = %q{DataMapper models for RESTful Authentication with Role-based Authorization}
+  gem.summary       = %q{DataMapper models for RESTful Authentication with Role-based Authorization}
   gem.homepage      = 'https://github.com/AnyWareFx/fx-auth'
 
   gem.files         = `git ls-files`.split($/)
